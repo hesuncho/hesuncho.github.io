@@ -12,7 +12,7 @@
       subtitle1: "단국대학교 교육대학원 교수",
       subtitle2: "음운론·음성학·AI활용 언어학 및 영어교육 연구",
       desc:
-        "MIT에서 언어학 박사(음운론·음성학)를 취득했으며, 영어교육과 언어학 연구, AI의 언어 능력 연구 및 AI 활용 영어교육에 대한 연구를 하고 있습니다.",
+        "MIT에서 언어학 박사(음운론·음성학)를 취득했으며, 언어학, AI의 언어 능력 연구 및 AI 활용 영어교육에 대한 연구를 하고 있습니다.",
     },
     en: {
       greeting: "Hello, I am",
@@ -20,7 +20,7 @@
       subtitle1: "Professor, Dankook University, Graduate School of Education",
       subtitle2: "Phonology, phonetics, AI-assisted linguistics research & English education",
       desc:
-        "I earned my Ph.D. in Linguistics (phonology and phonetics) from MIT. My research focuses on English education, linguistics, AI language capabilities, and AI-enhanced English teaching.",
+        "I earned my Ph.D. in Linguistics (phonology and phonetics) from MIT. My research focuses on linguistics, AI language capabilities, and AI-enhanced English teaching.",
     },
   };
 
