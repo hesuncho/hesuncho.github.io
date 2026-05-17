@@ -25,9 +25,11 @@
   };
 
   const header = document.querySelector(".site-header");
+  const navLogo = document.querySelector(".nav__logo");
   const menuToggle = document.getElementById("menuToggle");
   const navMenu = document.getElementById("navMenu");
   const navLinks = document.querySelectorAll(".nav__link");
+  const isHomePage = Boolean(document.querySelector(".hero"));
   const themeToggle = document.getElementById("themeToggle");
   const themeIcon = themeToggle?.querySelector(".theme-toggle__icon");
   const typedName = document.getElementById("typedName");
@@ -137,6 +139,22 @@
 
   navLinks.forEach((link) => {
     link.addEventListener("click", closeMenu);
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  navLogo?.addEventListener("click", (e) => {
+    if (!isHomePage) return;
+    e.preventDefault();
+    scrollToTop();
+    closeMenu();
+  });
+
+  backToTop?.addEventListener("click", (e) => {
+    e.preventDefault();
+    scrollToTop();
   });
 
   /* ----- Scroll: header, back-to-top, active nav ----- */

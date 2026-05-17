@@ -499,14 +499,20 @@ ul {
   margin-bottom: 0.5rem;
 }
 
+/* 이름(조혜선입니다. / Hyesun Cho.)만 원래 제목 크기의 70% — KOR·ENG 동일 */
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 6.5vw, 4.2rem);
+  font-size: clamp(1.82rem, 4.55vw, 2.94rem);
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: 1rem;
   color: var(--color-text);
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4), 0 2px 8px rgba(61, 50, 41, 0.15);
+}
+
+#heroContent[lang="ko"] .hero__greeting,
+#heroContent[lang="en"] .hero__greeting {
+  font-size: 1.1rem;
 }
 
 [data-theme="dark"] .hero__title {
@@ -807,6 +813,7 @@ ul {
 .timeline__item p {
   color: var(--color-text-muted);
   font-size: 0.95rem;
+  font-weight: 700;
 }
 
 /* ===== Projects / Credentials ===== */
@@ -992,7 +999,7 @@ ul {
 
 .contact-list__row {
   display: grid;
-  grid-template-columns: 6.5rem 1fr;
+  grid-template-columns: 7.8rem 1fr;
   gap: 1rem 1.5rem;
   align-items: baseline;
   padding: 0.7rem 0.85rem;
@@ -1012,8 +1019,8 @@ ul {
 
 .contact-list dt {
   margin: 0;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.96rem;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-text-muted);
@@ -1021,7 +1028,7 @@ ul {
 
 .contact-list dd {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -1172,27 +1179,57 @@ ul {
   position: fixed;
   right: 1.5rem;
   bottom: 1.5rem;
-  width: 3rem;
-  height: 3rem;
+  z-index: 200;
+  width: 3.25rem;
+  min-height: 3.25rem;
+  padding: 0.4rem 0.3rem 0.45rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.1rem;
   background: linear-gradient(180deg, var(--color-grass) 0%, var(--color-grass-dark) 100%);
   color: #fff;
   border-radius: 50%;
   border: 2px solid var(--color-surface);
   box-shadow: 0 8px 20px var(--color-shadow);
-  font-family: var(--font-display);
-  font-size: 1.2rem;
+  text-decoration: none;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transform: translateY(1rem);
   transition: opacity var(--transition), visibility var(--transition), transform var(--transition);
+}
+
+.site-footer .back-to-top {
+  color: #fff;
+}
+
+.site-footer .back-to-top:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.back-to-top__arrow {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.back-to-top__label {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  opacity: 0.95;
 }
 
 .back-to-top.is-visible {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translateY(0);
 }
 
@@ -1327,7 +1364,8 @@ ul {
 }
 
 /* ===== Papers page ===== */
-.papers-page .site-header {
+.papers-page .site-header,
+.talks-page .site-header {
   border-bottom: 2px solid var(--color-border);
 }
 
@@ -1339,6 +1377,26 @@ ul {
   position: relative;
   padding: 3.5rem 0 2.5rem;
   overflow: hidden;
+}
+
+.papers-page .papers-hero {
+  padding: 0.85rem 0 0.65rem;
+  min-height: 4.65rem;
+  display: flex;
+  align-items: center;
+}
+
+/* talks: 배경은 상자보다 넓게 — min-height는 상자 높이보다 커야 적용됨 */
+.papers-page.talks-page .papers-hero {
+  padding: 1.43rem 0 1.11rem;
+  min-height: clamp(12rem, 30vh, 16rem);
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 1.5rem;
+}
+
+.papers-page.talks-page .papers-hero__wrap {
+  width: 100%;
 }
 
 .papers-hero__bg {
@@ -1353,9 +1411,79 @@ ul {
   z-index: 0;
 }
 
+.papers-page .papers-hero__bg,
+.talks-page .papers-hero__bg {
+  background: none;
+}
+
+.papers-page .papers-hero__bg-image,
+.talks-page .papers-hero__bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.papers-page .papers-hero__overlay,
+.talks-page .papers-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    105deg,
+    rgba(245, 240, 230, 0.14) 0%,
+    rgba(245, 240, 230, 0.07) 28%,
+    rgba(245, 240, 230, 0.02) 48%,
+    transparent 65%
+  );
+}
+
+[data-theme="dark"] .papers-page .papers-hero__bg-image,
+[data-theme="dark"] .talks-page .papers-hero__bg-image {
+  filter: brightness(0.72) saturate(0.92);
+}
+
+[data-theme="dark"] .papers-page .papers-hero__overlay,
+[data-theme="dark"] .talks-page .papers-hero__overlay {
+  background: linear-gradient(
+    105deg,
+    rgba(30, 42, 53, 0.32) 0%,
+    rgba(30, 42, 53, 0.16) 28%,
+    rgba(30, 42, 53, 0.05) 48%,
+    transparent 65%
+  );
+}
+
+.papers-page .papers-hero__wrap,
+.talks-page .papers-hero__wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.papers-page .papers-hero__panel,
+.talks-page .papers-hero__panel {
+  max-width: 40rem;
+  margin-left: clamp(1.25rem, 6vw, 3.5rem);
+  padding: 1.15rem 1.5rem;
+  border-radius: var(--radius);
+  background: rgba(255, 252, 245, 0.45);
+  border: 1px solid rgba(109, 76, 46, 0.12);
+  box-shadow: 0 8px 28px rgba(61, 50, 41, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .papers-page .papers-hero__panel,
+[data-theme="dark"] .talks-page .papers-hero__panel {
+  background: rgba(42, 56, 68, 0.55);
+  border-color: rgba(240, 235, 227, 0.1);
+}
+
 .papers-hero__inner {
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 .papers-hero__title {
@@ -1365,11 +1493,44 @@ ul {
   margin-bottom: 0.75rem;
 }
 
+.papers-page .papers-hero__title {
+  margin-bottom: 0.35rem;
+  font-size: clamp(1.85rem, 4vw, 2.6rem);
+}
+
 .papers-hero__desc {
   max-width: 40rem;
   color: var(--color-text-muted);
   margin-bottom: 1.5rem;
   line-height: 1.75;
+}
+
+.papers-page .papers-hero__desc {
+  margin-bottom: 0.75rem;
+  font-size: 1.14rem;
+  line-height: 1.6;
+}
+
+.talks-page .papers-hero__panel {
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: clamp(1.25rem, 6vw, 3.5rem);
+  padding: 0.77rem 1rem;
+}
+
+.talks-page .papers-hero__panel .section__label {
+  margin-bottom: 0.3rem;
+}
+
+.talks-page .papers-hero__title {
+  margin-bottom: 0.25rem;
+  font-size: clamp(1.25rem, 2.7vw, 1.75rem);
+}
+
+.talks-page .papers-hero__desc {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
 }
 
 .papers-hero__desc a {
@@ -1478,6 +1639,12 @@ ul {
   border-color: var(--color-hill);
   box-shadow: 0 8px 24px var(--color-shadow);
   transform: translateX(4px);
+}
+
+.papers-page:not(.talks-page) .paper-item__title,
+.talks-page .paper-item__title {
+  font-size: 1.224rem;
+  font-weight: 700;
 }
 
 .paper-item__title {

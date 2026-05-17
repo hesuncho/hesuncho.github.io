@@ -38,8 +38,12 @@
 
   <main id="main" class="papers-main">
     <header class="papers-hero">
-      <div class="papers-hero__bg" aria-hidden="true"></div>
-      <div class="container papers-hero__inner reveal">
+      <div class="papers-hero__bg" aria-hidden="true">
+        <img class="papers-hero__bg-image" src="dku_rose2.png" alt="" />
+        <div class="papers-hero__overlay"></div>
+      </div>
+      <div class="container papers-hero__wrap">
+        <div class="papers-hero__panel reveal">
         <span class="section__label">Publications</span>
         <h1 class="papers-hero__title">Papers</h1>
         <p class="papers-hero__desc">
@@ -51,6 +55,7 @@
           <a href="#cat-3">3. Phonetics &amp; Phonology</a>
           <a href="#cat-4">4. English Education</a>
         </nav>
+        </div>
       </div>
     </header>
 
@@ -225,7 +230,10 @@
 
   <footer class="site-footer">
     <p><a href="index.html">← Home</a> · <a href="talks.html">Talks</a> · &copy; <span id="yearFooter"></span> 조혜선 (Hyesun Cho)</p>
-    <a href="#top" class="back-to-top" id="backToTop" aria-label="맨 위로">↑</a>
+    <a href="#top" class="back-to-top" id="backToTop" aria-label="맨 위로">
+      <span class="back-to-top__arrow" aria-hidden="true">↑</span>
+      <span class="back-to-top__label">TOP</span>
+    </a>
   </footer>
 
   <script src="script.js"></script>
