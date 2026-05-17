@@ -1069,6 +1069,62 @@ ul {
   );
 }
 
+.contact-email-copy {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: var(--radius-sm);
+  transition: transform 0.15s ease, opacity var(--transition);
+}
+
+.contact-email-copy:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.contact-email-copy:focus-visible {
+  outline: 2px solid var(--color-grass);
+  outline-offset: 3px;
+}
+
+.contact-email-copy img {
+  display: block;
+  width: auto;
+  height: 1.2em;
+  max-width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(61, 50, 41, 0.12);
+}
+
+.contact-email-copy__hint {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.contact-email-copy:hover .contact-email-copy__hint,
+.contact-email-copy.is-copied .contact-email-copy__hint {
+  color: var(--color-grass-dark);
+}
+
+.contact-email-copy.is-copied .contact-email-copy__hint {
+  color: var(--color-accent-warm);
+}
+
+[data-theme="dark"] .contact-email-copy:hover .contact-email-copy__hint,
+[data-theme="dark"] .contact-email-copy.is-copied .contact-email-copy__hint {
+  color: var(--color-accent);
+}
+
 .contact-list a {
   color: var(--color-grass-dark);
   text-decoration: none;

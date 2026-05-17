@@ -309,6 +309,54 @@
     });
   });
 
+  /* ----- Contact email: click to copy ----- */
+  const emailCopyButtons = document.querySelectorAll(".contact-email-copy");
+
+  async function copyEmailToClipboard(text) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+  }
+
+  emailCopyButtons.forEach((btn) => {
+    const hint = btn.querySelector(".contact-email-copy__hint");
+    const defaultHint = hint?.textContent || "Click to copy";
+    const copiedHint = hint?.dataset.copied || "Copied!";
+    let resetTimer;
+
+    btn.addEventListener("click", async () => {
+      const email = btn.dataset.copy || "hscho@dankook.ac.kr";
+
+      try {
+        await copyEmailToClipboard(email);
+        btn.classList.add("is-copied");
+        if (hint) hint.textContent = copiedHint;
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => {
+          btn.classList.remove("is-copied");
+          if (hint) hint.textContent = defaultHint;
+        }, 2000);
+      } catch {
+        if (hint) hint.textContent = "Copy failed";
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => {
+          if (hint) hint.textContent = defaultHint;
+        }, 2000);
+      }
+    });
+  });
+
   /* ----- Footer year ----- */
   const year = String(new Date().getFullYear());
   if (yearEl) yearEl.textContent = year;
