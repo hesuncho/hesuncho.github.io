@@ -877,6 +877,10 @@ ul {
   margin-bottom: 0.75rem;
 }
 
+.project-card__num strong {
+  font-weight: 700;
+}
+
 [data-theme="dark"] .project-card__num {
   color: var(--color-accent);
 }
